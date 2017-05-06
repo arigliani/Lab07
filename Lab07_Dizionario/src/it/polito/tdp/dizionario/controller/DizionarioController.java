@@ -1,8 +1,10 @@
 package it.polito.tdp.dizionario.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.dizionario.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class DizionarioController {
+	Model model= new Model();
 
 	@FXML
 	private ResourceBundle resources;
@@ -35,12 +38,14 @@ public class DizionarioController {
 
 	@FXML
 	void doGeneraGrafo(ActionEvent event) {
-
 		try {
-			txtResult.setText("Controller -- TODO!");
-			
-		} catch (RuntimeException re) {
-			txtResult.setText(re.getMessage());
+		txtResult.clear();
+		int i= Integer.parseInt(inputNumeroLettere.getText());
+		List<String> grafo=  model.createGraph(i);
+		txtResult.setText(grafo.toString());
+		
+		} catch(IllegalArgumentException e){
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -48,7 +53,7 @@ public class DizionarioController {
 	void doTrovaGradoMax(ActionEvent event) {
 		
 		try {
-			txtResult.setText("Controller -- TODO!");
+			
 
 		} catch (RuntimeException re) {
 			txtResult.setText(re.getMessage());

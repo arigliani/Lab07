@@ -9,7 +9,7 @@ import java.util.List;
 
 public class WordDAO {
 
-	/*
+	/**
 	 * Ritorna tutte le parole di una data lunghezza che differiscono per un solo carattere
 	 */
 	public List<String> getAllSimilarWords(String parola, int numeroLettere) {

@@ -10,13 +10,13 @@ public class TestModel {
 		
 		System.out.println(String.format("**Grafo creato** - Trovate #%d parole di lunghezza 4\n",  model.createGraph(4).size()));
 		
-		//List<String> vicini = model.displayNeighbours("casa");
-		//System.out.println("Vicini di casa: " + vicini);
+		List<String> vicini = model.displayNeighbours("care");
+		System.out.println("Vicini di casa: " + vicini);
 		
 		System.out.println();
 		
 		System.out.println("Cerco il vertice con grado massimo...");
-		//System.out.println(model.findMaxDegree(4));
+		System.out.println(model.findMaxDegree(4));
 	}
 
 }
