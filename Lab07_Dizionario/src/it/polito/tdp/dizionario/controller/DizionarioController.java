@@ -42,17 +42,30 @@ public class DizionarioController {
 		txtResult.clear();
 		int i= Integer.parseInt(inputNumeroLettere.getText());
 		List<String> grafo=  model.createGraph(i);
-		txtResult.setText(grafo.toString());
+		String elenco=this.trasformaStringa(grafo);
+		txtResult.setText(elenco);
 		
 		} catch(IllegalArgumentException e){
 			throw new IllegalArgumentException();
 		}
 	}
 
+	private String trasformaStringa(List<String> grafo) {
+		String elenco="";
+		for(String i: grafo){
+			elenco+=i+"\n";
+		}
+		return elenco.trim();
+	}
+
 	@FXML
 	void doTrovaGradoMax(ActionEvent event) {
 		
 		try {
+			txtResult.clear();
+			int i= Integer.parseInt(inputNumeroLettere.getText());
+			String parola= model.findMaxDegree(i);
+			txtResult.setText("la parola con grado max e': "+parola);
 			
 
 		} catch (RuntimeException re) {
@@ -64,7 +77,11 @@ public class DizionarioController {
 	void doTrovaVicini(ActionEvent event) {
 		
 		try {
-			txtResult.setText("Controller -- TODO!");
+			txtResult.clear();
+			String parola= inputParola.getText();
+			List<String> grafo=model.displayNeighbours(parola);
+			String elenco=this.trasformaStringa(grafo);
+			txtResult.setText(elenco);
 
 		} catch (RuntimeException re) {
 			txtResult.setText(re.getMessage());
